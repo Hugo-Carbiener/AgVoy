@@ -50,7 +50,7 @@ class Room
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Owner::class, inversedBy="rooms")
+     * @ORM\ManyToOne(targetEntity=Owner::class, inversedBy="rooms", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
