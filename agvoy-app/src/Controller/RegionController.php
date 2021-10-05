@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegionController extends AbstractController
 {
     /**
-     * @Route("/", name="region_index", methods={"GET"})
+     * @Route("/list", name="region_index", methods={"GET"})
      */
     public function index(RegionRepository $regionRepository): Response
     {

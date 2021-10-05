@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OwnerRoomController extends AbstractController
 {
     /**
-     * @Route("/", name="owner_room_index", methods={"GET"})
+     * @Route("/list", name="owner_room_index", methods={"GET"})
      */
     public function index(RoomRepository $roomRepository): Response
     {
@@ -83,7 +83,7 @@ class OwnerRoomController extends AbstractController
      */
     public function delete(Request $request, Room $room): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $room->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($room);
             $entityManager->flush();
