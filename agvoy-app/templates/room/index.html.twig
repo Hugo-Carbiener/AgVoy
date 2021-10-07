@@ -30,7 +30,9 @@
 					<td>{{ room.price }}</td>
 					<td>{{ room.address }}</td>
 					<td>
-						<a href="{{ path('room_show', {'id': room.id}) }}">show</a>
+						<a href="{{ path('room_show', {'id': room.id}) }}">
+							<button class="btn btn-lg btn-primary">show</button>
+						</a>
 					</td>
 				</tr>
 			{% else %}

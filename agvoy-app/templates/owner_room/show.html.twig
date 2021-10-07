@@ -39,9 +39,13 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('owner_room_index') }}">back to list</a>
+	<a href="{{ path('owner_room_index') }}">
+		<button class="btn btn-lg btn-primary">back to list</button>
+	</a>
 
-	<a href="{{ path('owner_room_edit', {'id': room.id}) }}">edit</a>
+	<a href="{{ path('owner_room_edit', {'id': room.id}) }}">
+		<button class="btn btn-lg btn-primary">edit</button>
+	</a>
 
 	{{ include('owner_room/_delete_form.html.twig') }}
 {% endblock %}
