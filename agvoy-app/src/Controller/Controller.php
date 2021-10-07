@@ -17,7 +17,6 @@ class Controller extends AbstractController
 {
     /**
      * @Route("", name="homepage", methods={"GET"})
-     * @Route("/home", name="homepage", methods={"GET"})
      */
     public function homepage(RoomRepository $roomRepository): Response
     {
