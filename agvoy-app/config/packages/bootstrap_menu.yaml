@@ -1,0 +1,16 @@
+bootstrap_menu:
+  menus:
+    main:
+      items:
+        home:
+          label: 'Home'
+          route: 'homepage'
+        rooms:
+          label: 'Our destinations'
+          route: 'room_index'
+        owners:
+          label: 'Our owners'
+          route: 'owner_index'
+        regions:
+          label: 'Our regions'
+          route: 'region_index'
