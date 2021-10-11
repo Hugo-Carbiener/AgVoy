@@ -39,6 +39,9 @@ class OwnerController extends AbstractController
             $entityManager->persist($owner);
             $entityManager->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Owner added');
+
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +72,9 @@ class OwnerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Owner modified');
+
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -88,6 +94,9 @@ class OwnerController extends AbstractController
             $entityManager->remove($owner);
             $entityManager->flush();
         }
+
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'Owner deleted');
 
         return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
     }

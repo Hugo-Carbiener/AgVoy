@@ -39,6 +39,9 @@ class OwnerRoomController extends AbstractController
             $entityManager->persist($room);
             $entityManager->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Room added');
+
             return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +72,9 @@ class OwnerRoomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Room modified');
+
             return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -87,6 +93,9 @@ class OwnerRoomController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($room);
             $entityManager->flush();
+
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Room deleted');
         }
 
         return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);

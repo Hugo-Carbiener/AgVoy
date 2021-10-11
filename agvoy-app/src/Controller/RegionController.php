@@ -39,6 +39,9 @@ class RegionController extends AbstractController
             $entityManager->persist($region);
             $entityManager->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Region added');
+
             return $this->redirectToRoute('region_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +72,9 @@ class RegionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Region modified');
+
             return $this->redirectToRoute('region_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -87,6 +93,9 @@ class RegionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($region);
             $entityManager->flush();
+
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Region deleted');
         }
 
         return $this->redirectToRoute('region_index', [], Response::HTTP_SEE_OTHER);
