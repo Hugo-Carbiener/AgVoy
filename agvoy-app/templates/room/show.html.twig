@@ -14,6 +14,14 @@
 				<td>{{ room.summary }}</td>
 			</tr>
 			<tr>
+				<th>Regions</th>
+				<td>
+					{% for region in room.region %}
+						{{region.name}}
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
 				<th>Description</th>
 				<td>{{ room.description }}</td>
 			</tr>

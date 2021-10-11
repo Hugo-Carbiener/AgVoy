@@ -9,12 +9,14 @@
 			<tr>
 				<th>Id</th>
 				<th>Summary</th>
+				<th>Regions</th>
 				<th>Description</th>
 				<th>Capacity</th>
 				<th>Superficy</th>
 				<th>Price</th>
 				<th>Address</th>
 				<th>actions</th>
+				<!--<th>Image</th>-->
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +24,11 @@
 				<tr>
 					<td>{{ room.id }}</td>
 					<td>{{ room.summary }}</td>
+					<td>
+						{% for region in room.region %}
+							{{region.name}}
+						{% endfor %}
+					</td>
 					<td>{{ room.description }}</td>
 					<td>{{ room.capacity }}</td>
 					<td>{{ room.superficy }}</td>
@@ -33,11 +40,11 @@
 						</a>
 					</td>
 				</tr>
-			{% else %}
-				<tr>
-					<td colspan="8">no records found</td>
-				</tr>
-			{% endfor %}
+			</tbody>
 		</tbody>
-	</table>
-{% endblock %}
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="8">no records found</td>
+	</tr>
+{% endfor %}</tbody></table>{% endblock %}
