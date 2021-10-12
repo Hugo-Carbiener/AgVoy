@@ -13,6 +13,19 @@
 					{{ render_bootstrap_menu('main') }}
 				</ul>
 			</div>
+			{% if app.user %}
+				<div class="collapse navbar-collapse auth" id="navbarsAccountDefault">
+					<ul class="navbar-nav ml-auto">
+						{{ render_bootstrap_menu('account') }}
+					</ul>
+				</div>
+			{% else %}
+				<div class="collapse navbar-collapse auth" id="navbarsAnonAccountDefault">
+					<ul class="navbar-nav ml-auto">
+						{{ render_bootstrap_menu('anonymousaccount') }}
+					</ul>
+				</div>
+			{% endif %}
 		</div>
 	</nav>
 	{% block main %}{% endblock %}
