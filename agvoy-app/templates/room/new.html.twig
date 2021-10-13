@@ -3,9 +3,9 @@
 {% block main %}
 	<h1>Create new Room</h1>
 
-	{{ include('owner_room/_form.html.twig') }}
+	{{ include('room/_form.html.twig') }}
 
-	<a href="{{ path('owner_room_index') }}">
+	<a href="{{ path('room_index') }}">
 		<button class="btn-lg btn-outline-dark back-to-list-btn">back to list →</button>
 	</a>
 {% endblock %}

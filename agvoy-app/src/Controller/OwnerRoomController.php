@@ -11,22 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/owner/room")
+ * @Route("/room")
  */
 class OwnerRoomController extends AbstractController
 {
     /**
-     * @Route("/list", name="owner_room_index", methods={"GET"})
+     * @Route("/list", name="room_index", methods={"GET"})
      */
     public function index(RoomRepository $roomRepository): Response
     {
-        return $this->render('owner_room/index.html.twig', [
+        return $this->render('room/index.html.twig', [
             'rooms' => $roomRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="owner_room_new", methods={"GET","POST"})
+     * @Route("/new", name="room_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,27 +42,27 @@ class OwnerRoomController extends AbstractController
             // Make sure message will be displayed after redirect
             $this->get('session')->getFlashBag()->add('message', 'Room added');
 
-            return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('owner_room/new.html.twig', [
+        return $this->render('room/new.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="owner_room_show", methods={"GET"})
+     * @Route("/{id}", name="room_show", methods={"GET"})
      */
     public function show(Room $room): Response
     {
-        return $this->render('owner_room/show.html.twig', [
+        return $this->render('room/show.html.twig', [
             'room' => $room,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="owner_room_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="room_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Room $room): Response
     {
@@ -75,17 +75,17 @@ class OwnerRoomController extends AbstractController
             // Make sure message will be displayed after redirect
             $this->get('session')->getFlashBag()->add('message', 'Room modified');
 
-            return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('owner_room/edit.html.twig', [
+        return $this->render('room/edit.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="owner_room_delete", methods={"POST"})
+     * @Route("/{id}", name="room_delete", methods={"POST"})
      */
     public function delete(Request $request, Room $room): Response
     {
@@ -98,6 +98,6 @@ class OwnerRoomController extends AbstractController
             $this->get('session')->getFlashBag()->add('message', 'Room deleted');
         }
 
-        return $this->redirectToRoute('owner_room_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
     }
 }
