@@ -2,7 +2,7 @@
 
 {% block main %}
 	<h1>Edit Region</h1>
-	{% if is_granted('ROLE_USER') %}
+	{% if is_granted('ROLE_ADMIN') %}
 		{{ include('region/_form.html.twig', {'button_label': 'Update'}) }}
 	{% endif %}
 
