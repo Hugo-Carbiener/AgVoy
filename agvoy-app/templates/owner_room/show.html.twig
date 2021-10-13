@@ -49,9 +49,11 @@
 	</table>
 
 
-	<a href="{{ path('owner_room_edit', {'id': room.id}) }}">
-		<button class="btn btn-lg btn-primary">edit</button>
-	</a>
+	{% if is_granted('ROLE_USER') %}
+		<a href="{{ path('owner_room_edit', {'id': room.id}) }}">
+			<button class="btn btn-lg btn-primary">edit</button>
+		</a>
+	{% endif %}
 
 	{{ include('owner_room/_delete_form.html.twig') }}
 	<a href="{{ path('owner_room_index') }}">

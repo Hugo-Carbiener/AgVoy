@@ -2,8 +2,9 @@
 
 {% block main %}
 	<h1>Book a room anywhere in the world</h1>
-
-	<a href="{{ path('owner_room_new') }}">Create new</a>
+	{% if is_granted('ROLE_USER') %}
+		<a href="{{ path('owner_room_new') }}">Create new</a>
+	{% endif %}
 
 	<table class="table">
 		<thead>
@@ -38,9 +39,11 @@
 						<a href="{{ path('owner_room_show', {'id': room.id}) }}">
 							<button class="btn btn-lg btn-outline-primary">show</button>
 						</a>
-						<a href="{{ path('owner_room_edit', {'id': room.id}) }}">
-							<button class="btn btn-lg btn-outline-primary">edit</button>
-						</a>
+						{% if is_granted('ROLE_USER') %}
+							<a href="{{ path('owner_room_edit', {'id': room.id}) }}">
+								<button class="btn btn-lg btn-outline-primary">edit</button>
+							</a>
+						{% endif %}
 					</td>
 				</tr>
 			{% else %}

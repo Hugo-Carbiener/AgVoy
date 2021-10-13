@@ -2,8 +2,9 @@
 
 {% block main %}
 	<h1>Edit Region</h1>
-
-	{{ include('region/_form.html.twig', {'button_label': 'Update'}) }}
+	{% if is_granted('ROLE_USER') %}
+		{{ include('region/_form.html.twig', {'button_label': 'Update'}) }}
+	{% endif %}
 
 	<a href="{{ path('region_index') }}">
 		<button class="btn-lg btn-outline-dark back-to-list-btn">back to list →</button>
