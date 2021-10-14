@@ -26,6 +26,11 @@
 					</ul>
 				</div>
 			{% endif %}
+			<div class="collapse navbar-collapse" id="navbarsAnonAccountDefault">
+				<ul class="navbar-nav ml-auto">
+					{{ render_bootstrap_menu('cart') }}
+				</ul>
+			</div>
 		</div>
 	</nav>
 	{% block main %}{% endblock %}

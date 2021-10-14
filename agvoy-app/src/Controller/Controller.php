@@ -29,9 +29,11 @@ class Controller extends AbstractController
         $cart = $this->get('session')->get('cart');
         $rooms = array();
 
-        foreach ($cart as $id) {
-            $room = $roomRepository->findOneBy(['id' => $id]);
-            $rooms[] = $room;
+        if (!empty($cart)) {
+            foreach ($cart as $id) {
+                $room = $roomRepository->findOneBy(['id' => $id]);
+                $rooms[] = $room;
+            }
         }
 
         return $this->render('cart.html.twig', [
