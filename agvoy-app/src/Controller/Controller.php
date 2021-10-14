@@ -20,4 +20,22 @@ class Controller extends AbstractController
     {
         return $this->render('home.html.twig');
     }
+
+    /**
+     * @Route("/cart", name="cart", methods={"GET"})
+     */
+    public function index(RoomRepository $roomRepository): Response
+    {
+        $cart = $this->get('session')->get('cart');
+        $rooms = array();
+
+        foreach ($cart as $id) {
+            $room = $roomRepository->findOneBy(['id' => $id]);
+            $rooms[] = $room;
+        }
+
+        return $this->render('cart.html.twig', [
+            'rooms' => $rooms,
+        ]);
+    }
 }

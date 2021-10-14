@@ -106,4 +106,40 @@ class RoomController extends AbstractController
 
         return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * Add a room to cart
+     * 
+     * @Route("/cart/{id}", name="room_to_cart", requirements={ "id": "\d+"}, methods="GET")
+     */
+    public function markAction(Room $room): Response
+    {
+        $id = $room->getId();
+
+        $cart = $this->get('session')->get('cart');
+
+        if (!is_array($cart)) {
+            $cart = array();
+            $this->get('session')->set('cart', $cart);
+        }
+
+        if (!in_array($id, $cart)) {
+            $cart[] = $id;
+        } else
+        // sinon, le retirer du tableau
+        {
+            $cart = array_diff($cart, array($id));
+        }
+
+        //on enregistre la liste dans la session
+        $this->get('session')->set('cart', $cart);
+
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'Room successfully added to cart');
+
+        return $this->redirectToRoute(
+            'room_show',
+            ['id' => $room->getId()]
+        );
+    }
 }

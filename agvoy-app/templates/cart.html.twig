@@ -1,0 +1,34 @@
+{% extends 'index.html.twig' %}
+
+{% block main %}
+	<h1 style="text-align: center;">Your cart</h1>
+
+	{% for room in rooms %}
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="{{ vich_uploader_asset(room, 'imageFile') }}" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">{{ room.summary }}</h5>
+				<p class="card-text">{{ room.description }}</p>
+				<a href="{{ path('room_show', {'id': room.id}) }}">
+					<button class="btn btn-lg btn-outline-primary">show</button>
+				</a>
+				{% if is_granted('ROLE_USER') %}
+					<a class="add-btn" href="{{ path('room_edit', {'id': room.id}) }}">
+						<button class="btn btn-lg btn-outline-primary">edit</button>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	{% else %}
+		<p>no records found</p>
+	{% endfor %}
+	<div class="container"></div>
+	{% if is_granted('ROLE_USER') %}
+		<a class="add-btn" href="{{ path('room_new') }}">
+			<button class="btn btn-lg btn-primary add-btn">+ Add a Room</button>
+		</a>
+	{% endif %}
+
+
+	<hr class="separator"></hr>
+<h2 style="text-align: center;">Filter by Regions</h2>{% endblock %}
