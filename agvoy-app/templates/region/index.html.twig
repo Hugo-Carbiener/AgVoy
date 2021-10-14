@@ -1,44 +1,35 @@
 {% extends 'index.html.twig' %}
 
 {% block main %}
-	<h1>Region index</h1>
-	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('region_new') }}">Create new</a>
-	{% endif %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Presentation</th>
-				<th>Country</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for region in regions %}
-				<tr>
-					<td>{{ region.id }}</td>
-					<td>{{ region.name }}</td>
-					<td>{{ region.presentation }}</td>
-					<td>{{ region.country }}</td>
-					<td>
-						<a href="{{ path('region_show', {'id': region.id}) }}">
-							<button class="btn btn-lg btn-outline-primary">show</button>
-						</a>
-						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('region_edit', {'id': region.id}) }}">
-								<button class="btn btn-lg btn-outline-primary">edit</button>
-							</a>
-						{% endif %}
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="5">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	<h1 style="text-align: center;">Where will you plan your next trip?</h1>
 
+	{% for region in regions %}
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="#" alt="Card image cap">
+			<div class="card-body">
+				<h4 class="card-title">{{ region.country}}</h4>
+				<h5 class="card-title">{{ region.name }}</h5>
+				<p class="card-text">{{ region.presentation }}</p>
+				<a href="{{ path('region_show', {'id': region.id}) }}">
+					<button class="btn btn-lg btn-outline-primary">show</button>
+				</a>
+				<a href="{{ path('region_index_room', {'id': region.id}) }}">
+					<button class="btn btn-lg btn-outline-primary">See the rooms</button>
+				</a>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{ path('region_edit', {'id': region.id}) }}">
+						<button class="btn btn-lg btn-outline-primary">edit</button>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	{% else %}
+		<p>no records found</p>
+	{% endfor %}
+	<div class="container"></div>
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('region_new') }}">
+			<button class="btn btn-lg btn-primary add-btn">+ Add a Region</button>
+		</a>
+	{% endif %}
 {% endblock %}
