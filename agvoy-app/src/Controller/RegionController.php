@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Region;
 use App\Form\RegionType;
 use App\Repository\RegionRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,16 @@ class RegionController extends AbstractController
     {
         return $this->render('region/index.html.twig', [
             'regions' => $regionRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/rooms", name="region_index_room", methods={"GET"})
+     */
+    public function indexRoom(RegionRepository $regionRepository, Region $region): Response
+    {
+        return $this->render('region/index_room.html.twig', [
+            'region' => $region,
         ]);
     }
 
