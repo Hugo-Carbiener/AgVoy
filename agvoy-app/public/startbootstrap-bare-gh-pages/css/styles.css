@@ -110,6 +110,18 @@ body {
   transition: 0.4s;
 }
 
+.add-btn {
+  margin-left: 50%;
+  margin-right: 50%;
+  width: 10em;
+}
+
+.region-btn {
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+}
+
 .ribbon {
   background-color: var(--bs-gray-700);
   width: 100%;
@@ -117,11 +129,14 @@ body {
 }
 
 hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
+  color: grey;
+  background-color: grey;
   border: 0;
   opacity: 0.25;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 hr:not([size]) {
@@ -4816,7 +4831,14 @@ fieldset:disabled .btn {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin: 20px;
+  display: inline-block;
 }
+
+.card:hover {
+  box-shadow: 5px 5px 5px grey;
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
