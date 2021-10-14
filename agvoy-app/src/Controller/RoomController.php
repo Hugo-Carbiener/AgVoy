@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/room")
  */
-class OwnerRoomController extends AbstractController
+class RoomController extends AbstractController
 {
     /**
      * @Route("/list", name="room_index", methods={"GET"})
