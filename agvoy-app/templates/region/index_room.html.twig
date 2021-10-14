@@ -1,53 +1,29 @@
 {% extends 'index.html.twig' %}
 
 {% block main %}
-	<h1>Book a room anywhere in the world</h1>
+	<h1 style="text-align: center;">Book a room anywhere in the world</h1>
+
+	{% for room in region.rooms %}
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="{{ vich_uploader_asset(room, 'imageFile') }}" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">{{ room.summary }}</h5>
+				<p class="card-text">{{ room.description }}</p>
+				<a href="{{ path('room_show', {'id': room.id}) }}">
+					<button class="btn btn-lg btn-outline-primary">show</button>
+				</a>
+			</div>
+		</div>
+	{% else %}
+		<p>no records found</p>
+	{% endfor %}
+	<div class="container"></div>
 	{% if is_granted('ROLE_USER') %}
-		<a href="{{ path('region_new') }}">Create new</a>
+		<a href="{{ path('room_new') }}">
+			<button class="btn btn-lg btn-primary add-btn">+ Add a Room</button>
+		</a>
 	{% endif %}
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Summary</th>
-				<th>Regions</th>
-				<th>Description</th>
-				<th>Capacity</th>
-				<th>Superficy</th>
-				<th>Price</th>
-				<th>Address</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for room in region.rooms %}
-				<tr>
-					<td>{{ room.id }}</td>
-					<td>{{ room.summary }}</td>
-					<td>{{region.name}}</td>
-					<td>{{ room.description }}</td>
-					<td>{{ room.capacity }}</td>
-					<td>{{ room.superficy }}</td>
-					<td>{{ room.price }}</td>
-					<td>{{ room.address }}</td>
-					<td>
-						<a href="{{ path('region_show', {'id': room.id}) }}">
-							<button class="btn btn-lg btn-outline-primary">show</button>
-						</a>
-						{% if is_granted('ROLE_USER') %}
-							<a href="{{ path('region_edit', {'id': room.id}) }}">
-								<button class="btn btn-lg btn-outline-primary">edit</button>
-							</a>
-						{% endif %}
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="8">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-
+	<a href="{{ path('room_index') }}">
+		<button class="btn-lg btn-outline-dark back-to-list-btn">back to list →</button>
+	</a>
 {% endblock %}

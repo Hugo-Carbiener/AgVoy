@@ -19,7 +19,7 @@
 	{% endfor %}
 	<div class="container"></div>
 	{% if is_granted('ROLE_USER') %}
-		<a href="{{ path('room_new') }}">
+		<a class="add-btn" href="{{ path('room_new') }}">
 			<button class="btn btn-lg btn-primary add-btn">+ Add a Room</button>
 		</a>
 	{% endif %}
