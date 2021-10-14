@@ -12,6 +12,11 @@
 				<a href="{{ path('room_show', {'id': room.id}) }}">
 					<button class="btn btn-lg btn-outline-primary">show</button>
 				</a>
+				{% if is_granted('ROLE_USER') %}
+					<a class="add-btn" href="{{ path('room_edit', {'id': room.id}) }}">
+						<button class="btn btn-lg btn-outline-primary">edit</button>
+					</a>
+				{% endif %}
 			</div>
 		</div>
 	{% else %}
