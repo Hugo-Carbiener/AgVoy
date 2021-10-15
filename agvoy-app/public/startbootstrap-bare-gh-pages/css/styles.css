@@ -5231,7 +5231,7 @@ fieldset:disabled .btn {
 
 .alert {
   position: absolute;
-  top: 123px;
+  top: 100px;
   padding: 1rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;

@@ -38,11 +38,11 @@ class OwnerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($owner);
             $entityManager->flush();
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Owner successfully added');
 
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
-        // Make sure message will be displayed after redirect
-        $this->get('session')->getFlashBag()->add('message', 'Owner successfully added');
 
         return $this->render('owner/new.html.twig', [
             'owner' => $owner,
@@ -70,12 +70,12 @@ class OwnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Owner successfully modified');
 
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        // Make sure message will be displayed after redirect
-        $this->get('session')->getFlashBag()->add('message', 'Owner successfully modified');
 
         return $this->render('owner/edit.html.twig', [
             'owner' => $owner,
@@ -92,10 +92,10 @@ class OwnerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($owner);
             $entityManager->flush();
+            // Make sure message will be displayed after redirect
+            $this->get('session')->getFlashBag()->add('message', 'Owner successfully deleted');
         }
 
-        // Make sure message will be displayed after redirect
-        $this->get('session')->getFlashBag()->add('message', 'Owner successfully deleted');
 
         return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
     }
