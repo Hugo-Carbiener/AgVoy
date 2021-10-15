@@ -23,7 +23,10 @@
 			</tr>
 			<tr>
 				<th>Owner</th>
-				<td></td>
+				<td>
+					<a class="in-show-links" href="{{ path('owner_show', {'id': room.owner.id}) }}">{{room.owner.firstname}}
+						{{room.owner.familyname}}</a>
+				</td>
 			</tr>
 			<tr>
 				<th>Description</th>
