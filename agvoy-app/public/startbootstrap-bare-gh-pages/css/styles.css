@@ -126,6 +126,11 @@ body {
   height: 20%;
 }
 
+.in-show-links {
+  text-decoration: none;
+  color: #000;
+}
+
 hr {
   color: grey;
   background-color: grey;

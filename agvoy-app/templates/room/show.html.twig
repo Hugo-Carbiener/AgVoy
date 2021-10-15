@@ -17,8 +17,14 @@
 				<th>Regions</th>
 				<td>
 					{% for region in room.region %}
-						{{region.name}}
+						<a class="in-show-links" href="{{ path('region_show', {'id': region.id}) }}">{{region.name}}</a>
 					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Owner</th>
+				<td>
+					<a class="in-show-links" href="{{ path('owner_show', {'id': room.owner.id}) }}">{{room.owner.firstname}}</a>
 				</td>
 			</tr>
 			<tr>
@@ -59,6 +65,7 @@
 	{% endif %}
 
 	{{ include('room/_delete_form.html.twig') }}
+
 	<a href="{{ path('room_index') }}">
 		<button class="btn-lg btn-outline-dark back-to-list-btn">back to list →</button>
 	</a>

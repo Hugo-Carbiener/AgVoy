@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'index.html.twig' %}
 
-{% block title %}Edit Owner{% endblock %}
+{% block main %}
+	<h1>Edit Owner</h1>
 
-{% block body %}
-    <h1>Edit Owner</h1>
+	{{ include('owner/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('owner/_form.html.twig', {'button_label': 'Update'}) }}
+	<a href="{{ path('owner_index') }}">
+		<button class="btn-lg btn-outline-dark back-to-list-btn">back to list →</button>
+	</a>
 
-    <a href="{{ path('owner_index') }}">back to list</a>
-
-    {{ include('owner/_delete_form.html.twig') }}
+	{{ include('owner/_delete_form.html.twig') }}
 {% endblock %}
