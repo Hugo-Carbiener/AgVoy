@@ -11,6 +11,9 @@ bootstrap_menu:
         regions:
           label: 'Our regions'
           route: 'region_index'
+        owners:
+          label: 'Our owners'
+          route: 'owner_index'
     anonymousaccount:
       items:
          login:
