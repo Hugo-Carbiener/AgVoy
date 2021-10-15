@@ -45,6 +45,8 @@ class RegistrationController extends AbstractController
                 'main' // firewall name in security.yaml
             );
         }
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'User successfully added');
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),

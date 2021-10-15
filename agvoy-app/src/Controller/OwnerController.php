@@ -41,6 +41,8 @@ class OwnerController extends AbstractController
 
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'Owner successfully added');
 
         return $this->render('owner/new.html.twig', [
             'owner' => $owner,
@@ -72,6 +74,9 @@ class OwnerController extends AbstractController
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'Owner successfully modified');
+
         return $this->render('owner/edit.html.twig', [
             'owner' => $owner,
             'form' => $form->createView(),
@@ -83,11 +88,14 @@ class OwnerController extends AbstractController
      */
     public function delete(Request $request, Owner $owner): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$owner->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $owner->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($owner);
             $entityManager->flush();
         }
+
+        // Make sure message will be displayed after redirect
+        $this->get('session')->getFlashBag()->add('message', 'Owner successfully deleted');
 
         return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
     }

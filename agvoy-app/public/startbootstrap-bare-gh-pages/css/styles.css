@@ -3790,9 +3790,6 @@ fieldset:disabled .btn {
   border-radius: 0.2rem;
 }
 
-.fade {
-  transition: opacity 0.15s linear;
-}
 @media (prefers-reduced-motion: reduce) {
   .fade {
     transition: none;
@@ -5233,7 +5230,8 @@ fieldset:disabled .btn {
 }
 
 .alert {
-  position: relative;
+  position: absolute;
+  top: 123px;
   padding: 1rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;

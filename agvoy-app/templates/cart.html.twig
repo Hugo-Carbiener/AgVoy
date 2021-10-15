@@ -20,15 +20,6 @@
 			</div>
 		</div>
 	{% else %}
-		<p>no records found</p>
+		<p>Your cart is empty, have a look around !</p>
 	{% endfor %}
-	<div class="container"></div>
-	{% if is_granted('ROLE_USER') %}
-		<a class="add-btn" href="{{ path('room_new') }}">
-			<button class="btn btn-lg btn-primary add-btn">+ Add a Room</button>
-		</a>
-	{% endif %}
-
-
-	<hr class="separator"></hr>
-<h2 style="text-align: center;">Filter by Regions</h2>{% endblock %}
+{% endblock %}

@@ -44,7 +44,7 @@ class RoomController extends AbstractController
             $entityManager->flush();
 
             // Make sure message will be displayed after redirect
-            $this->get('session')->getFlashBag()->add('message', 'Room added');
+            $this->get('session')->getFlashBag()->add('message', 'Room successfully added');
 
             return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -78,7 +78,7 @@ class RoomController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             // Make sure message will be displayed after redirect
-            $this->get('session')->getFlashBag()->add('message', 'Room modified');
+            $this->get('session')->getFlashBag()->add('message', 'Room successfully modified');
 
             return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -101,7 +101,7 @@ class RoomController extends AbstractController
             $entityManager->flush();
 
             // Make sure message will be displayed after redirect
-            $this->get('session')->getFlashBag()->add('message', 'Room deleted');
+            $this->get('session')->getFlashBag()->add('message', 'Room successfully deleted');
         }
 
         return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
